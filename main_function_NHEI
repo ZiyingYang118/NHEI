@@ -1,5 +1,3 @@
-
-
 library(remotes)
 library(sampling)
 library(survey)
@@ -11,22 +9,19 @@ library(robustbase)
 library(MatchIt)
 library(dummies)
 library(MASS)
-
 library(plyr)
 library(KWML)
 library(lme4)
 library(depmixS4)
 library(snowfall)
-
 library(NonProbEst)
 library(sandwich)
-
 library(jmuOutlier)
 
 ###########################################################################################################################################################
 ###########################################Main function
 ###########################################################################################################################################################
-# 参数说明                                                                                                                                                #
+# Parameter Description                                                                                                                                   #
 # data_NP: Nonprobability sample                                                                                                                          #
 # data_P: Reference sample (Probability sample)                                                                                                           #
 # CIV: Names of common variables between nonprobability sample and reference sample                                                                       #
@@ -35,9 +30,9 @@ library(jmuOutlier)
 # maxclassnum:Maximum number of latent classes                                                                                                            #
 ###########################################################################################################################################################
 NPasso_ALC <-
-  function(data_NP=data_A,data_P=data_B,
-           CIV=c('W1','W2'),type_CIV=c('gaussian','gaussian'),
-           sample_weight='sample_weight',maxclassnum=5)
+    function(data_NP=data_A,data_P=data_B,
+             CIV=c('W1','W2'),type_CIV=c('gaussian','gaussian'),
+             sample_weight='sample_weight',maxclassnum=5)
   {
     #################################################################################################
     ##################################################################################Preprocessing the data-----
@@ -142,7 +137,7 @@ NPasso_ALC <-
       data_NP2 <- data_com2[data_com2$group==1,]
       data_P2 <- data_com2[data_com2$group==0,]
       
-      #逆概率加权的模型表达式及模型构建
+      #Model Expression and Construction of Inverse Probability Weighting Models
       formula_myipw <- paste('group~',paste(CIV_2,collapse = '+'),sep='')
       fit_toNP <- glm(eval(str2lang(formula_myipw)), data=data_com2, family='binomial', weights = SW)
     }#bestnum==1
