@@ -14,7 +14,7 @@ Estimate the effect size and 95%CI of with simulated data using the NHEI method.
 
 1.Generate the simulated data using `simu_data_NHEI()`
 ```
-data <- simu_data_NHEI(N=100000,n_A=500,n_B=2000,n_LC=2,icc=0=0.5,n_Z=1,n_P=1,dist=1,path_scenario=9,R2_ZtoR=0.5,R2_ZtoX=0.5,R2_ZtoY=0.5,coef_ZXtoY=0.1,coef_XtoR=0.1,coef_YtoR=0.1)
+data <- simu_data_NHEI(N=100000,n_A=500,n_B=2000,n_LC=2,icc=0.5,n_Z=1,n_P=1,Ytype='gaussian',dist=1,path_scenario=9,R2_ZtoR=0.5,R2_ZtoX=0.5,R2_ZtoY=0.5,coef_ZXtoY=0.1,coef_XtoR=0.1,coef_YtoR=0.1)
 data_SA <- data$nonprobability_sample
 data_SB <- data$reference_sample
 ```
